@@ -23,7 +23,7 @@
                         <tbody>
                             <tr class="align-middle">
                                 <td>
-                                    <img src="assets/images/dish_01.png" alt="" class="rounded object-fit-cover"
+                                    <img src="{{url('assets/images/dish_01.png')}}" alt="" class="rounded object-fit-cover"
                                         width="40">
                                 </td>
                                 <td>Cheesey Chicken</td>

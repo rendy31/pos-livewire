@@ -22,15 +22,21 @@ class KategoriMenuController extends Controller
      */
     public function create()
     {
-    return view('pages.admin.kategori-menu.create');
-    }
+        return view('pages.admin.kategori-menu.create');
+    } 
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        //VALIDASI FORM INPUT
+        $validated = $request->validate([
+            'kategoriMenu' => 'required|unique:kategori_menus'
+        ]);
+        KategoriMenu::create($validated);
+        notify()->success('DATA DITAMBAHKAN !','BERHASIL');
+        return redirect()->route('kategori-menu.index');
     }
 
     /**
@@ -46,7 +52,8 @@ class KategoriMenuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = KategoriMenu::find($id);
+        return view('pages.admin.kategori-menu.edit',compact('item'));
     }
 
     /**
@@ -54,7 +61,12 @@ class KategoriMenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //VALIDASI FORM INPUT
+        $validated = $request->validate([
+            'kategoriMenu' => 'required|unique:kategori_menus'
+        ]);
+        KategoriMenu::find($id)->update($validated);
+        return redirect()->route('kategori-menu.index')->with('sukses','Success Update!');
     }
 
     /**
@@ -62,6 +74,7 @@ class KategoriMenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        KategoriMenu::find($id)->delete();
+        return redirect()->route('kategori-menu.index')->with('sukses','Success Deleted!');
     }
 }

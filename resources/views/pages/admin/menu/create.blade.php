@@ -44,7 +44,7 @@
                         <button class="btn btn-sm btn-primary" type="submit">
                             <i class="bx bx-save"></i> Simpan Baru
                         </button>
-                        <a href="dashboard-menu.html" class="btn btn-sm  btn-light">
+                        <a href="{{route('menu.index')}}" class="btn btn-sm  btn-light">
                             <i class="bx bx-arrow-back"></i> Kembali
                         </a>
                     </div>
